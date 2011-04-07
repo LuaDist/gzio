@@ -1,0 +1,15 @@
+--- This file is part of LuaDist project
+
+name = "gzio"
+version = "1.0.0"
+
+desc = "The Lua gzip file I/O module emulates the standard I/O module, but operates on compressed gzip format files."
+author = "Judge Maygarden"
+license = "MIT"
+maintainer = "Peter Kapec"
+url = "https://github.com/jmaygarden/gzio"
+
+depends = {
+	"lua ~> 5.1",
+	"zlib >=1.2.3"
+}
