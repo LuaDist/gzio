@@ -1,24 +1,26 @@
-# Copyright (C) 2007-2009 LuaDist.
+# Copyright (C) 2007-2011 LuaDist.
 # Created by Peter Kapec
 # Redistribution and use of this file is allowed according to the terms of the MIT license.
 # For details see the COPYRIGHT file distributed with LuaDist.
 # Please note that the package source code is licensed under its own license.
 
-PROJECT(gzio C)
-CMAKE_MINIMUM_REQUIRED(VERSION 2.6)
-INCLUDE(dist.cmake)
+project ( gzio C )
+cmake_minimum_required ( VERSION 2.6 )
+include ( dist.cmake )
 
 # Find Zlib
-FIND_PACKAGE (ZLIB REQUIRED)
-INCLUDE_DIRECTORIES( ${ZLIB_INCLUDE_DIR})
+find_package ( ZLIB REQUIRED )
+include_directories ( ${ZLIB_INCLUDE_DIR} )
 
-# Build
-INCLUDE_DIRECTORIES(src)
-ADD_LUA_MODULE(gzio src/lgziolib.c src/gzio.def)
-TARGET_LINK_LIBRARIES(gzio ${ZLIB_LIBRARIES} )
+include_directories ( src )
+install_lua_module ( gzio src/lgziolib.c src/gzio.def )
+target_link_libraries ( gzio ${ZLIB_LIBRARIES} )
 
-# Install all files and documentation
-INSTALL (TARGETS gzio DESTINATION ${INSTALL_CMOD})
-INSTALL (FILES src/tar.lua DESTINATION ${INSTALL_LMOD})
-INSTALL (FILES README DESTINATION ${INSTALL_DATA})
-INSTALL (DIRECTORY test/ DESTINATION ${INSTALL_TEST})
+install_lua_module ( tar src/tar.lua )
+install_data ( README )
+install_test ( test/ )
+
+add_lua_test ( test/test.lua test )
+#add_lua_test ( test/lartest.lua test )
+#add_lua_test ( test/tartest.lua test )
+  #FIX:LuaDist: add tar.lua to package.path
