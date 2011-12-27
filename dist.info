@@ -1,7 +1,7 @@
 --- This file is part of LuaDist project
 
 name = "gzio"
-version = "1.0.0"
+version = "1.0.1"
 
 desc = "The Lua gzip file I/O module emulates the standard I/O module, but operates on compressed gzip format files."
 author = "Judge Maygarden"
